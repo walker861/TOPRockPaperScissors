@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+body {
+  background-color: black;
+  color: white;
+  font-family: 'VT323', 'Courier New', monospace;
+  font-size: 2rem;
+  box-sizing: border-box;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+  width: 60%;
+  border: solid 5px white;
+  margin: 5rem auto;
+}
+
+button {
+  background-color: black;
+  color: white;
+  font-family: 'VT323', 'Courier New', monospace;
+  font-size: 2rem;
+  border: solid white 0.4rem;
+
+  cursor: pointer;
+}
+
+h1 {
+  text-align: center;
+  border-bottom: solid 5px white;
+  padding-bottom: 3rem;
+}
+
+p {
+  text-align: center;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 3vw;
+  margin: 0.25rem;
+}
+
+.points {
+  display: block;
+}
+
+.scores {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5rem;
+}
+
+.reset {
+  border: solid white 5px;
+}
+
+.hide {
+  display: none;
+}
