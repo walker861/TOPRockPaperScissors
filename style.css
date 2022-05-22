@@ -62,3 +62,11 @@ p {
 .hide {
   display: none;
 }
+
+.computerWin {
+  font-size: 5rem;
+}
+
+.playerWin {
+  font-size: 5rem;
+}

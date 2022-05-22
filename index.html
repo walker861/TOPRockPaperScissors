@@ -10,32 +10,49 @@
 
   <body>
     <main>
-      <h1 class="title">Rock Paper Scissors</h1>
+      <div class="game">
+        <h1 class="title">Rock Paper Scissors</h1>
 
-      <div class="scores">
-        <p>Computer Score <span class="computerScore">0</span></p>
-        <p>Player Score <span class="playerScore">0</span></p>
+        <div class="scores">
+          <p>Computer Score <span class="computerScore">0</span></p>
+          <p>Player Score <span class="playerScore">0</span></p>
+        </div>
+        <!-- scores close -->
+
+        <p>Make your choice</p>
+
+        <div class="buttons">
+          <button class="rock">Rock</button>
+          <button class="paper">Paper</button>
+          <button class="scissors">Scissors</button>
+        </div>
+        <!-- buttons close -->
+
+        <div class="results">
+          <p class="computer"></p>
+          <p class="player"></p>
+          <p class="draw hide">Draw!</p>
+          <p class="win hide">You win this round!</p>
+          <p class="lose hide">You lose this round!</p>
+        </div>
+        <!-- result close -->
       </div>
-
-      <p>Make your choice</p>
-
-      <div class="buttons">
-        <button class="rock">Rock</button>
-        <button class="paper">Paper</button>
-        <button class="scissors">Scissors</button>
+      <!--game close   -->
+      <div class="computerWin hide">
+        <p>Game Over!</p>
+        <p>🦾 Computer Wins!!! 🦾</p>
       </div>
+      <!-- computerWin close -->
 
-      <div class="results">
-        <p class="computer"></p>
-        <p class="player"></p>
-
-        <p class="draw hide">Draw!</p>
-        <p class="win hide">You win this round!</p>
-        <p class="lose hide">You lose this round!</p>
+      <div class="playerWin hide">
+        <p>Game Over!</p>
+        <p>😎 Player Wins!!! 😎</p>
       </div>
+      <!-- playerWin close -->
 
       <button class="reset">Reset</button>
     </main>
+
     <script src="script.js"></script>
   </body>
 </html>

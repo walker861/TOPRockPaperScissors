@@ -1,32 +1,6 @@
 'use strict';
 
-// const computerWins =
-//   (computerSelection === 'rock' && playerSelection === 'scissors') ||
-//   (computerSelection === 'paper' && playerSelection === 'rock') ||
-//   (computerSelection === 'scissors' && playerSelection === 'paper');
-
-// Computer choice
-function computerPlay() {
-  let random = Math.trunc(Math.random() * 3) + 1;
-  if (random === 1) {
-    return 'rock';
-  } else if (random === 2) {
-    return 'paper';
-  } else if (random === 3) {
-    return 'scissors';
-  }
-}
-
-function checkWinner() {
-  if (computerScore > playerScore) {
-    console.log(`Computer wins game! ${computerScore}-${playerScore}`);
-  } else if (playerScore > computerScore) {
-    console.log(`Player wins game! ${playerScore}-${computerScore}`);
-  } else if (playerScore === computerScore) {
-    console.log(`Draw! ${playerScore}-${computerScore}`);
-  }
-}
-
+// DOM selectors
 let win = document.querySelector('.win');
 let draw = document.querySelector('.draw');
 let lose = document.querySelector('.lose');
@@ -45,6 +19,12 @@ let playerScore = document.querySelector('.playerScore');
 let computerPoints = Number(computerScore.innerText);
 let playerPoints = Number(playerScore.innerText);
 
+let computerWin = document.querySelector('.computerWin');
+let playerWin = document.querySelector('.playerWin');
+
+let game = document.querySelector('.game');
+
+// Game functions
 function resetGame() {
   computerScore.innerText = 0;
   playerScore.innerText = 0;
@@ -55,8 +35,63 @@ function resetGame() {
   lose.classList.add('hide');
   win.classList.add('hide');
   draw.classList.add('hide');
+  playerWin.classList.add('hide');
+  computerWin.classList.add('hide');
+  game.classList.remove('hide');
 }
 
+function checkWinner() {
+  if (computerScore.innerText >= 5) {
+    game.classList.add('hide');
+    computerWin.classList.remove('hide');
+    console.log('computer');
+  } else if (playerScore.innerText >= 5) {
+    game.classList.add('hide');
+    playerWin.classList.remove('hide');
+    console.log('player');
+  }
+}
+
+// Computer choice
+function computerPlay() {
+  let random = Math.trunc(Math.random() * 3) + 1;
+  if (random === 1) {
+    return 'rock';
+  } else if (random === 2) {
+    return 'paper';
+  } else if (random === 3) {
+    return 'scissors';
+  }
+}
+
+function computerRound() {
+  lose.classList.remove('hide');
+  win.classList.add('hide');
+  draw.classList.add('hide');
+
+  computerPoints += 1;
+  computerScore.innerHTML = computerPoints;
+
+  checkWinner();
+}
+
+function playerRound() {
+  win.classList.remove('hide');
+  lose.classList.add('hide');
+  draw.classList.add('hide');
+  playerPoints += 1;
+  playerScore.innerHTML = playerPoints;
+  checkWinner();
+}
+
+function drawRound() {
+  draw.classList.remove('hide');
+  lose.classList.add('hide');
+  win.classList.add('hide');
+  checkWinner();
+}
+
+// Button click events
 rock.addEventListener(
   'click',
   function playRound(playerSelection, computerSelection) {
@@ -67,22 +102,11 @@ rock.addEventListener(
     computer.innerText = `Computer chose ${computerSelection}`;
 
     if (computerSelection === 'paper') {
-      lose.classList.remove('hide');
-      win.classList.add('hide');
-      draw.classList.add('hide');
-
-      computerPoints += 1;
-      computerScore.innerHTML = computerPoints;
+      computerRound();
     } else if (computerSelection === 'scissors') {
-      win.classList.remove('hide');
-      lose.classList.add('hide');
-      draw.classList.add('hide');
-      playerPoints += 1;
-      playerScore.innerHTML = playerPoints;
+      playerRound();
     } else {
-      draw.classList.remove('hide');
-      lose.classList.add('hide');
-      win.classList.add('hide');
+      drawRound();
     }
   }
 );
@@ -96,21 +120,11 @@ scissors.addEventListener(
     computerSelection = computerPlay();
     computer.innerText = `Computer chose ${computerSelection}`;
     if (computerSelection === 'rock') {
-      lose.classList.remove('hide');
-      win.classList.add('hide');
-      draw.classList.add('hide');
-      computerPoints += 1;
-      computerScore.innerHTML = computerPoints;
+      computerRound();
     } else if (computerSelection === 'paper') {
-      win.classList.remove('hide');
-      lose.classList.add('hide');
-      draw.classList.add('hide');
-      playerPoints += 1;
-      playerScore.innerHTML = playerPoints;
+      playerRound();
     } else {
-      draw.classList.remove('hide');
-      lose.classList.add('hide');
-      win.classList.add('hide');
+      drawRound();
     }
   }
 );
@@ -125,21 +139,11 @@ paper.addEventListener(
     computer.innerText = `Computer chose ${computerSelection}`;
 
     if (computerSelection === 'scissors') {
-      lose.classList.remove('hide');
-      win.classList.add('hide');
-      draw.classList.add('hide');
-      computerPoints += 1;
-      computerScore.innerHTML = computerPoints;
+      computerRound();
     } else if (computerSelection === 'rock') {
-      win.classList.remove('hide');
-      lose.classList.add('hide');
-      draw.classList.add('hide');
-      playerPoints += 1;
-      playerScore.innerHTML = playerPoints;
+      playerRound();
     } else {
-      draw.classList.remove('hide');
-      lose.classList.add('hide');
-      win.classList.add('hide');
+      drawRound();
     }
   }
 );
